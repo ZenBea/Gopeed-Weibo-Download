@@ -1,0 +1,103 @@
+{
+  "name": "gopeed-extension-weibo-video",
+  "author": "weibo-downloader",
+  "title": "Weibo Media Downloader",
+  "description": "Auto-parse Weibo videos, image posts, Live Photos, mixed posts (tv/show, video.weibo.com, t.cn, status links), and direct weibocdn.com / sinaimg.cn links into Gopeed tasks with Referer header and quality selection.",
+  "icon": "icon.png",
+  "version": "1.2.0",
+  "homepage": "",
+  "repository": {
+    "url": ""
+  },
+  "scripts": [
+    {
+      "event": "onResolve",
+      "match": {
+        "urls": [
+          "*://weibo.com/*",
+          "*://*.weibo.com/*",
+          "*://weibo.cn/*",
+          "*://*.weibo.cn/*",
+          "*://t.cn/*",
+          "*://*.weibocdn.com/*",
+          "*://*.sinaimg.cn/*"
+        ]
+      },
+      "entry": "index.js"
+    }
+  ],
+  "settings": [
+    {
+      "name": "quality",
+      "title": "Preferred Quality",
+      "description": "Select the preferred video resolution, or list all available qualities in Gopeed.",
+      "type": "string",
+      "value": "best",
+      "options": [
+        {
+          "label": "Best Available",
+          "value": "best"
+        },
+        {
+          "label": "4K (2160p)",
+          "value": "2160"
+        },
+        {
+          "label": "1080p",
+          "value": "1080"
+        },
+        {
+          "label": "720p",
+          "value": "720"
+        },
+        {
+          "label": "480p",
+          "value": "480"
+        },
+        {
+          "label": "360p",
+          "value": "360"
+        },
+        {
+          "label": "All Qualities (Choose in Gopeed)",
+          "value": "all"
+        }
+      ]
+    },
+    {
+      "name": "livePhoto",
+      "title": "Live Photo Mode",
+      "description": "How to handle Weibo Live Photos in image posts.",
+      "type": "string",
+      "value": "both",
+      "options": [
+        {
+          "label": "Both Image & Video Clip",
+          "value": "both"
+        },
+        {
+          "label": "Image Only",
+          "value": "image"
+        },
+        {
+          "label": "Video Clip Only",
+          "value": "video"
+        }
+      ]
+    },
+    {
+      "name": "cookie",
+      "title": "Weibo Cookie (Optional, for Private / 4K)",
+      "description": "Optional. Paste your Weibo Cookie header or SUB value from browser DevTools to access private, follower-only, VIP, or 1080p/4K videos. Leave blank for automatic guest access on public posts.",
+      "type": "string",
+      "value": ""
+    },
+    {
+      "name": "userAgent",
+      "title": "Custom User-Agent (Optional)",
+      "description": "Optional custom User-Agent override. Leave blank to use the default modern Desktop Chrome User-Agent.",
+      "type": "string",
+      "value": ""
+    }
+  ]
+}
